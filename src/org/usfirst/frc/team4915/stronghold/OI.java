@@ -1,5 +1,4 @@
 package org.usfirst.frc.team4915.stronghold;
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -12,6 +11,8 @@ import java.io.InputStream;
 import java.util.jar.Attributes;
 import java.util.jar.Manifest;
 
+
+
 /**
  * This class handles the "operator interface", or the interactions between the
  * driver station and the robot code.
@@ -23,9 +24,9 @@ public class OI {
     // button.whenReleased(new ExampleCommand());
 
     // constants, need to talk to electrical to figure out correct port values
-    public static final int LAUNCHER_STICK_PORT = -1; // TODO
-    public static final int LAUNCH_BALL_BUTTON_NUMBER = -1; // TODO
-    public static final int INTAKE_BALL_BUTTON_NUMBER = -1; // TODO
+    public static final int LAUNCHER_STICK_PORT = 1; // TODO
+    public static final int LAUNCH_BALL_BUTTON_NUMBER = 2; // TODO
+    public static final int INTAKE_BALL_BUTTON_NUMBER = 3; // TODO
 
     // create new joysticks
     public Joystick driveStick;
@@ -69,7 +70,6 @@ public class OI {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public Joystick getJoystickDrive() {

@@ -17,8 +17,7 @@ import java.util.List;
 
 public class DriveTrain extends Subsystem {
 
-    public static RobotDrive robotDrive = 
-            new RobotDrive(RobotMap.leftFrontMotor, RobotMap.leftBackMotor, RobotMap.rightFrontMotor, RobotMap.rightBackMotor);
+    public static RobotDrive robotDrive = new RobotDrive(RobotMap.leftFrontMotor, RobotMap.leftBackMotor, RobotMap.rightFrontMotor, RobotMap.rightBackMotor);
     public double joystickThrottle;
     // For Gyro
     public static Gyro gyro = RobotMap.gyro;
