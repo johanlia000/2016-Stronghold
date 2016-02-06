@@ -4,6 +4,7 @@ package org.usfirst.frc.team4915.stronghold.commands;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team4915.stronghold.Robot;
+import org.usfirst.frc.team4915.stronghold.subsystems.DriveTrain;
 
 public class ArcadeDrive extends Command {
 
@@ -46,7 +47,6 @@ public class ArcadeDrive extends Command {
         } else {
             Robot.driveTrain.arcadeDrive(this.joystickDrive);
         }
-
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -65,4 +65,5 @@ public class ArcadeDrive extends Command {
     @Override
     protected void interrupted() {
     }
+
 }

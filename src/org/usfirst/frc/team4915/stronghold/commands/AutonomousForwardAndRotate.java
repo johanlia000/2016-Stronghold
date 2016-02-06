@@ -25,7 +25,7 @@ public class AutonomousForwardAndRotate extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-        requires(Robot.driveTrain);
+        //requires(Robot.driveTrain);
         addSequential(new MoveStraightPositionModeCommand(30) );
         addSequential(new AutoRotateDegrees(false, 45));
     }

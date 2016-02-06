@@ -12,13 +12,13 @@ public class MoveStraightPositionModeCommand extends Command {
 
     public static List<CANTalon> motors = Robot.driveTrain.motors;
     public double inputDistanceInches;
-    private DriveTrain driveTrain = Robot.driveTrain;
+    //private DriveTrain driveTrain = Robot.driveTrain;
     private List<Double> desiredTicksValue;
     private double driveStraightValue =  0.7;
 
     public MoveStraightPositionModeCommand(double inputDistanceInches) {
 
-        requires(this.driveTrain);
+        requires(Robot.driveTrain);
 
         System.out.println("***MoveStraightPositionModeCommand inputDistance: " + inputDistanceInches + "*******");
         //input of the distance is in inc
@@ -68,9 +68,9 @@ public class MoveStraightPositionModeCommand extends Command {
     @Override
     protected void execute() {
         if (this.inputDistanceInches < 0) {
-            this.driveTrain.driveStraight(this.driveStraightValue);
+            Robot.driveTrain.driveStraight(this.driveStraightValue);
         } else {
-            this.driveTrain.driveStraight(-this.driveStraightValue);
+            Robot.driveTrain.driveStraight(-this.driveStraightValue);
         }
     }
 
@@ -120,7 +120,7 @@ public class MoveStraightPositionModeCommand extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {
-        this.driveTrain.robotDrive.stopMotor();
+        Robot.driveTrain.robotDrive.stopMotor();
     }
 
     // Called when another command which requires one or more of the same
