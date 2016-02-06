@@ -21,7 +21,7 @@ public class MoveStraightPositionModeCommand extends Command {
         requires(this.driveTrain);
 
         System.out.println("***MoveStraightPositionModeCommand inputDistance: " + inputDistanceInches + "*******");
-
+        //input of the distance is in inc
         this.inputDistanceInches = inputDistanceInches;
 
         // Use requires() here to declare subsystem dependencies
@@ -39,15 +39,25 @@ public class MoveStraightPositionModeCommand extends Command {
 
         double ticksToMove = (this.inputDistanceInches * 256 * 4) / (14 * Math.PI);
         
-        double startingTickValue = motors.get(0).getPosition();
-        
+        double startingTickValue; 
+        double endValue; 
         // get the starting encoder value
         // move motors and read new encoder value
-  
-            double endValue = startingTickValue + ticksToMove;
+        for (int i = 0; i < motors.size(); i++) {
+            CANTalon motor = motors.get(i);
+            startingTickValue = motors.get(i).getPosition();
+            endValue = startingTickValue + ticksToMove;
+            
+            //checking if it's the right side motors
+            //right side motors are the 2,3 (left are 0,1)
+            if (i >= 2) {
+                // right motors are inverted
+                endValue = startingTickValue - ticksToMove;
+            }
             this.desiredTicksValue.add(endValue);
         }
-    
+        
+    }
 
     /**
      * This uses the wheel circumference and the number of rotations to compute
@@ -69,6 +79,7 @@ public class MoveStraightPositionModeCommand extends Command {
     protected boolean isFinished() {
         // checking to see if the front motors have finished regardless of
         // driving direction
+        System.out.println("input distance in inches: " + inputDistanceInches);
         if (this.inputDistanceInches > 0) {
             return isMotorFinished(1) || isMotorFinished(3);
         } else {
@@ -98,6 +109,9 @@ public class MoveStraightPositionModeCommand extends Command {
             } else {
                 finished = currentPosition >= desiredPosition;
             }
+        }
+        if (finished){
+            System.out.println("Motor " + i + " finished");
         }
         return finished;
 

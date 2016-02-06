@@ -2,6 +2,8 @@ package org.usfirst.frc.team4915.stronghold;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc.team4915.stronghold.commands.AutoRotateDegrees;
+import org.usfirst.frc.team4915.stronghold.commands.MoveStraightPositionModeCommand;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -42,6 +44,8 @@ public class OI {
     public OI() {
         this.driveStick = new Joystick(0);
         SmartDashboard.putString("ArcadeDrive", "INFO: Initializing the ArcadeDrive");
+        SmartDashboard.putData("Move straight position 30 inches ", new MoveStraightPositionModeCommand(30));
+        SmartDashboard.putData("Rotate right 90 degrees ", new AutoRotateDegrees(false, 90));
     }
 
     public Joystick getJoystickDrive() {
