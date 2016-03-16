@@ -3,7 +3,6 @@ package org.usfirst.frc.team4915.stronghold.commands.DriveTrain;
 import org.usfirst.frc.team4915.stronghold.Robot;
 import org.usfirst.frc.team4915.stronghold.RobotMap;
 import org.usfirst.frc.team4915.stronghold.utils.BNO055;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 public class AutoRotateDegrees extends Command {

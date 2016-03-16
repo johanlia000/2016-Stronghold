@@ -19,6 +19,7 @@ import org.usfirst.frc.team4915.stronghold.commands.IntakeLauncher.SpinIntakeWhe
 import org.usfirst.frc.team4915.stronghold.commands.IntakeLauncher.StopWheelsCommand;
 import org.usfirst.frc.team4915.stronghold.commands.vision.AutoAimControlCommand;
 import org.usfirst.frc.team4915.stronghold.subsystems.Autonomous;
+import org.usfirst.frc.team4915.stronghold.subsystems.Portcullis;
 import org.usfirst.frc.team4915.stronghold.vision.robot.VisionState;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -44,8 +45,6 @@ public class OI {
     public static final int DRIVE_STOP_INTAKE_WHEELS_BUTTON_NUMBER = 5;
     public static final int DRIVE_LAUNCHER_JUMP_TO_NEUTRAL_BUTTON_NUMBER = 6;
     public static final int DRIVE_LAUNCHER_JUMP_TO_INTAKE_BUTTON_NUMBER = 4;
-    public static final int PORTCULLIS_BUTTON_NUMBER_UP = 7;
-    public static final int PORTCULLIS_BUTTON_NUMBER_DOWN = 9;
     public static final int TURN_SCALER = 8;
 
     // Button numbers for launching related buttons on the mechanism stick
@@ -55,7 +54,9 @@ public class OI {
     public static final int LIGHT_SWITCH_BUTTON_NUMBER = 2;
     public static final int SPIN_INTAKE_WHEELS_OUT_LOW_BUTTON_NUMBER = 7;
     public static final int HIGH_LOW_BUTTON_NUMBER = 6;
-    public static final int AUTO_LAUNCH_TEST_BUTTON_NUMBER = 10;
+    //public static final int AUTO_LAUNCH_TEST_BUTTON_NUMBER = 9;
+    public static final int PORTCULLIS_BUTTON_NUMBER_UP = 11;
+    public static final int PORTCULLIS_BUTTON_NUMBER_DOWN = 10;
 
     // Button numbers for scaling related buttons on the mechanism joystick
     public static final int SCALER_REACH_UP_BUTTON_NUMBER = 3;
@@ -84,6 +85,9 @@ public class OI {
     public JoystickButton highLowButton;
     public JoystickButton lightSwitchButton;
     public JoystickButton autoLaunchTestButton;
+    //PORTCULLIS buttons
+    public JoystickButton portcullisButtonUp;
+    public JoystickButton portcullisButtonDown;
 
     // Create buttons for the scaler on the mechanism stick
     public JoystickButton scalerExtendButton;
@@ -92,11 +96,6 @@ public class OI {
     public JoystickButton scalerReachDownButton;
     public JoystickButton scalerLiftButton;
     public JoystickButton speedToggle;
-
-    //PORTCULLIS
-
-    public JoystickButton portcullisButtonUp;
-    public JoystickButton portcullisButtonDown;
 
     // variables for the sendable chooser
     public SendableChooser startingFieldPosition;
@@ -140,9 +139,10 @@ public class OI {
 
         // Bind module commands to buttons
         if (ModuleManager.PORTCULLIS_MODULE_ON){
-            initializeButton (this.portcullisButtonUp, driveStick, PORTCULLIS_BUTTON_NUMBER_UP, new PortcullisMoveUp());
-            initializeButton(this.portcullisButtonDown, driveStick, PORTCULLIS_BUTTON_NUMBER_DOWN, new PortcullisMoveDown());
+            initializeButton (this.portcullisButtonUp, aimStick, PORTCULLIS_BUTTON_NUMBER_UP, new PortcullisMoveUp());
+            initializeButton(this.portcullisButtonDown, aimStick, PORTCULLIS_BUTTON_NUMBER_DOWN, new PortcullisMoveDown());
         }
+        
         if (ModuleManager.DRIVE_MODULE_ON) {
         	initializeButton(this.speedToggle, driveStick, TURN_SCALER, new ToggleSpeed());
         }

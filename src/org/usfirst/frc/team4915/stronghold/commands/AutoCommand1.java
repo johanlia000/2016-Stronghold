@@ -26,16 +26,7 @@ public class AutoCommand1 extends CommandGroup {
         this.position = position;
         this.type = type;
         System.out.println("Angle: " + position + "Field Position " + position + "strategy " + strat + "Obstacle " + type);
-
-        if (ModuleManager.INTAKELAUNCHER_MODULE_ON) {
-          //  Robot.intakeLauncher.launcherSetNeutralPosition(); // placeholder
-                                                               // for setting
-                                                               // the launcher
-                                                               // to neutral
-                                                               // driving
-                                                               // position
-        }
-
+        
     	switch (strat) {
 		case DRIVE_SHOOT_VISION: // sets us up to use vision to shoot a high
 									// goal
@@ -113,6 +104,7 @@ public class AutoCommand1 extends CommandGroup {
 			break;
 
             }
+            
             else{
                 addSequential(new LauncherGoToNeutralPositionCommand());
                 addParallel(new AimLauncherCommand());

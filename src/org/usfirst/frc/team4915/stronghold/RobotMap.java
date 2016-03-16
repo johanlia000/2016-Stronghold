@@ -61,7 +61,7 @@ public class RobotMap {
     public static final int PORTCULLIS_FOLLOWER_MOTOR = 1;
 
     public static int PORTCULLIS_TOP = 100;
-    public static int PORTCULLIS_BOT = 0;
+    public static int PORTCULLIS_BOT = 5;
 
     //portcullis limit switch
     public static DigitalInput portcullisSwitchTop;
@@ -121,12 +121,13 @@ public class RobotMap {
             portcullisRightFollowerMotor = new CANTalon (PORTCULLIS_FOLLOWER_MOTOR);
 
             //master and follower
+            //left is master motor - right is follower motor
             portcullisRightFollowerMotor.changeControlMode(CANTalon.TalonControlMode.Follower);
             portcullisRightFollowerMotor.set(portcullisLeftMasterMotor.getDeviceID());
 
             //set up speed control mode
-            portcullisRightFollowerMotor.changeControlMode(CANTalon.TalonControlMode.Position);
-            portcullisLeftMasterMotor.changeControlMode(CANTalon.TalonControlMode.Position);
+            portcullisRightFollowerMotor.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
+            portcullisLeftMasterMotor.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 
             portcullisLeftMasterMotor.setForwardSoftLimit(PORTCULLIS_TOP);
             portcullisLeftMasterMotor.setReverseSoftLimit(PORTCULLIS_BOT);

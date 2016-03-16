@@ -1,18 +1,14 @@
 package org.usfirst.frc.team4915.stronghold.commands;
 
-import org.usfirst.frc.team4915.stronghold.RobotMap;
-
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc.team4915.stronghold.RobotMap;
+import org.usfirst.frc.team4915.stronghold.subsystems.Portcullis;
 
 /**
  *
-=======
-/*
- * 
->>>>>>> c0cfe573a4258530e4eb860b6da772cfbcbb53fa
  */
 public class PortcullisMoveDown extends Command {
-
+    
     public PortcullisMoveDown() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -20,21 +16,16 @@ public class PortcullisMoveDown extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        while (!RobotMap.portcullisSwitchBottom.get()){
-            RobotMap.portcullisLeftMasterMotor.set(-.6);
-        }
-        RobotMap.portcullisLeftMasterMotor.set(0);
     }
-    
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        
+        Portcullis.PortcullisMoveDown();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return RobotMap.portcullisSwitchBottom.get();
     }
 
     // Called once after isFinished returns true

@@ -1,11 +1,11 @@
 
 package org.usfirst.frc.team4915.stronghold;
 import org.usfirst.frc.team4915.stronghold.commands.AutoCommand1;
-import org.usfirst.frc.team4915.stronghold.commands.PortcullisMoveUp;
 import org.usfirst.frc.team4915.stronghold.subsystems.Autonomous;
 import org.usfirst.frc.team4915.stronghold.subsystems.DriveTrain;
 import org.usfirst.frc.team4915.stronghold.subsystems.GearShift;
 import org.usfirst.frc.team4915.stronghold.subsystems.IntakeLauncher;
+import org.usfirst.frc.team4915.stronghold.subsystems.Portcullis;
 import org.usfirst.frc.team4915.stronghold.subsystems.Scaler;
 import org.usfirst.frc.team4915.stronghold.utils.BNO055;
 
@@ -47,7 +47,7 @@ public class Robot extends IterativeRobot {
 
         // 2. conditionally create the modules
         if (ModuleManager.PORTCULLIS_MODULE_ON){
-            new PortcullisMoveUp().start();
+            Portcullis.PortcullisMoveUp();
 
         }
         if (ModuleManager.DRIVE_MODULE_ON) {
