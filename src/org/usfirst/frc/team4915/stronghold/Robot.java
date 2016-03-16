@@ -108,12 +108,11 @@ public class Robot extends IterativeRobot {
 
     @Override
     public void autonomousInit() {
-
         // schedule the autonomous command
+        System.out.println("Autonomous selection Angle: " + oi.startingFieldPosition.getSelected() + "Field Position " + oi.startingFieldPosition.getSelected() + "strategy " + oi.strategy.getSelected() + "Obstacle " + oi.barrierType.getSelected());
        autonomousCommand = new AutoCommand1((Autonomous.Type) oi.barrierType.getSelected(), (Autonomous.Strat) oi.strategy.getSelected(),
                 (Autonomous.Position) oi.startingFieldPosition.getSelected());
-       System.out.println("Autonomous selection Angle: " + oi.startingFieldPosition.getSelected() + "Field Position " + oi.startingFieldPosition.getSelected() + "strategy " + oi.strategy.getSelected() + "Obstacle " + oi.barrierType.getSelected());
-
+       
         if (this.autonomousCommand != null) {
             this.autonomousCommand.start();
         }
@@ -139,7 +138,9 @@ public class Robot extends IterativeRobot {
        // RobotMap.rightBackMotor.changeControlMode(CANTalon.TalonControlMode.Speed);
        // RobotMap.leftBackMotor.changeControlMode(CANTalon.TalonControlMode.Speed);
     	System.out.println("entering teleop");
+    	if (ModuleManager.INTAKELAUNCHER_MODULE_ON){
     	Robot.intakeLauncher.aimMotor.enableControl();
+    	}
         if (this.autonomousCommand != null) {
             this.autonomousCommand.cancel();
         }
